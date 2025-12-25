@@ -17,547 +17,43 @@
             --dark: #1a1a2e;
             --light: #f8fafc;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--dark);
             overflow-x: hidden;
             background: var(--light);
         }
-
-        /* ========== Navigation ========== */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
             transition: all 0.3s ease;
         }
-
         .nav.scrolled {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             padding: 15px 40px;
         }
-
         .nav-logo {
-            font-size: 24px;
-            font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 24px; font-weight: 900;
+            background: var(--gradient); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 14px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
         .nav-cta {
-            background: var(--gradient);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
+            background: var(--gradient); color: white; padding: 12px 28px;
+            border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 14px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        /* ========== Hero Section ========== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(180deg, #f8fafc 0%, #e8ecf4 100%);
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .hero-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .hero-blob-1 {
-            width: 600px;
-            height: 600px;
-            background: var(--primary);
-            top: -200px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-
-        .hero-blob-2 {
-            width: 500px;
-            height: 500px;
-            background: var(--secondary);
-            bottom: -150px;
-            left: -100px;
-            animation-delay: -5s;
-        }
-
-        .hero-blob-3 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 30px) scale(1.02); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--primary);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-badge-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .hero-title {
-            font-size: clamp(40px, 8vw, 80px);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.8s ease 0.1s both;
-        }
-
-        .hero-title-gradient {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(18px, 3vw, 24px);
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.3s both;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--dark);
-            padding: 18px 40px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .hero-mockup {
-            margin-top: 60px;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .mockup-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .mockup-phone {
-            width: 280px;
-            height: 580px;
-            background: white;
-            border-radius: 40px;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.15);
-            padding: 12px;
-            position: relative;
-        }
-
-        .mockup-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            border-radius: 32px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mockup-header {
-            padding: 40px 20px 20px;
-            text-align: center;
-            color: white;
-        }
-
-        .mockup-header h3 {
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
-
-        .mockup-header p {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .mockup-card {
-            flex: 1;
-            background: white;
-            margin: 0 12px 12px;
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        .mockup-input {
-            background: #f1f5f9;
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin-bottom: 10px;
-            font-size: 13px;
-            color: #64748b;
-        }
-
-        .mockup-btn {
-            background: var(--gradient);
-            color: white;
-            padding: 14px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: white;
-            border-radius: 16px;
-            padding: 16px 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            animation: floatCard 3s ease-in-out infinite;
-        }
-
-        .floating-card-1 {
-            top: 80px;
-            left: -120px;
-            animation-delay: 0s;
-        }
-
-        .floating-card-2 {
-            bottom: 120px;
-            right: -140px;
-            animation-delay: -1.5s;
-        }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .floating-emoji {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .floating-text {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .floating-subtext {
-            font-size: 11px;
-            color: #94a3b8;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ========== Problem Section ========== */
-        .problem {
-            padding: 120px 20px;
-            background: white;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 5vw, 48px);
-            font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: #64748b;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .problem-card {
-            background: #f8fafc;
-            border-radius: 24px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .problem-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        }
-
-        .problem-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 24px;
-        }
-
-        .problem-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .problem-card p {
-            color: #64748b;
-            line-height: 1.7;
-        }
-
-        /* ========== How It Works ========== */
-        .how-it-works {
-            padding: 120px 20px;
-            background: linear-gradient(180deg, #f8fafc 0%, white 100%);
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 900px) {
-            .steps {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .steps {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 900;
-            color: white;
-            margin: 0 auto 24px;
-            position: relative;
-        }
-
-        .step-number::after {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border: 2px dashed rgba(102, 126, 234, 0.3);
-            border-radius: 50%;
-        }
-
-        .step h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .step p {
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .step-arrow {
-            position: absolute;
-            top: 40px;
-            right: -15px;
-            font-size: 24px;
-            color: #cbd5e1;
-        }
-
-        @media (max-width: 900px) {
-            .step-arrow {
-                display: none;
-            }
-        }
-</style>
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-logo">📍 MeetupSpot</div>
         <ul class="nav-links">
@@ -565,10 +61,59 @@
             <li><a href="#how-it-works">使い方</a></li>
             <li><a href="#comparison">比較</a></li>
         </ul>
-        <a href="/app" class="nav-cta">今すぐ使う</a>
+        <a href="#" class="nav-cta">今すぐ使う</a>
     </nav>
 
-    <!-- Hero Section -->
+    <style>
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            background: linear-gradient(180deg, #f8fafc 0%, #e8ecf4 100%);
+        }
+        .hero-bg { position: absolute; inset: 0; overflow: hidden; }
+        .hero-blob {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6;
+            animation: float 20s ease-in-out infinite;
+        }
+        .hero-blob-1 { width: 600px; height: 600px; background: var(--primary); top: -200px; right: -100px; }
+        .hero-blob-2 { width: 500px; height: 500px; background: var(--secondary); bottom: -150px; left: -100px; animation-delay: -5s; }
+        .hero-blob-3 { width: 400px; height: 400px; background: var(--accent); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: -10s; }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 30px) scale(1.02); }
+        }
+        .hero-content { position: relative; z-index: 10; text-align: center; max-width: 900px; padding: 0 20px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px; background: white;
+            padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 500;
+            color: var(--primary); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px; animation: fadeInUp 0.8s ease;
+        }
+        .hero-badge-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .hero-title { font-size: clamp(40px, 8vw, 80px); font-weight: 900; line-height: 1.1; margin-bottom: 24px; animation: fadeInUp 0.8s ease 0.1s both; }
+        .hero-title-gradient { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-subtitle { font-size: clamp(18px, 3vw, 24px); color: #64748b; max-width: 600px; margin: 0 auto 40px; line-height: 1.7; animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero-cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.3s both; }
+        .btn-primary {
+            background: var(--gradient); color: white; padding: 18px 40px; border-radius: 60px;
+            text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex;
+            align-items: center; gap: 10px; transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4); }
+        .btn-secondary {
+            background: white; color: var(--dark); padding: 18px 40px; border-radius: 60px;
+            text-decoration: none; font-weight: 700; font-size: 16px; display: inline-flex;
+            align-items: center; gap: 10px; transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+
     <section class="hero">
         <div class="hero-bg">
             <div class="hero-blob hero-blob-1"></div>
@@ -589,47 +134,35 @@
                 中間地点を計算して、投票で民主的に決める。
             </p>
             <div class="hero-cta-group">
-                <a href="/app" class="btn-primary">
-                    <span>🚀</span>
-                    今すぐ始める
-                </a>
-                <a href="#how-it-works" class="btn-secondary">
-                    <span>▶</span>
-                    使い方を見る
-                </a>
-            </div>
-            <div class="hero-mockup">
-                <div class="mockup-container">
-                    <div class="floating-card floating-card-1">
-                        <div class="floating-emoji">🗳️</div>
-                        <div class="floating-text">投票で決定</div>
-                        <div class="floating-subtext">民主的に合意形成</div>
-                    </div>
-                    <div class="floating-card floating-card-2">
-                        <div class="floating-emoji">📍</div>
-                        <div class="floating-text">中間地点を計算</div>
-                        <div class="floating-subtext">AIが最適な場所を提案</div>
-                    </div>
-                    <div class="mockup-phone">
-                        <div class="mockup-screen">
-                            <div class="mockup-header">
-                                <h3>📍 MeetupSpot</h3>
-                                <p>みんなの中間地点でお店を探そう</p>
-                            </div>
-                            <div class="mockup-card">
-                                <div class="mockup-input">🚉 渋谷</div>
-                                <div class="mockup-input">🚉 新宿</div>
-                                <div class="mockup-input">🚉 池袋</div>
-                                <div class="mockup-btn">🔍 お店を探す</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a href="#" class="btn-primary"><span>🚀</span>今すぐ始める</a>
+                <a href="#how-it-works" class="btn-secondary"><span>▶</span>使い方を見る</a>
             </div>
         </div>
     </section>
 
-    <!-- Problem Section -->
+    <style>
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            display: inline-block; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: var(--primary); padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-bottom: 20px;
+        }
+        .section-title { font-size: clamp(32px, 5vw, 48px); font-weight: 900; margin-bottom: 20px; line-height: 1.3; }
+        .section-subtitle { font-size: 18px; color: #64748b; max-width: 600px; line-height: 1.8; }
+        .problem { padding: 120px 20px; background: white; }
+        .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
+        .problem-card {
+            background: #f8fafc; border-radius: 24px; padding: 40px; position: relative;
+            overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .problem-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); }
+        .problem-icon {
+            width: 60px; height: 60px; background: var(--gradient); border-radius: 16px;
+            display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 24px;
+        }
+        .problem-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+        .problem-card p { color: #64748b; line-height: 1.7; }
+    </style>
+
     <section class="problem" id="features">
         <div class="container">
             <span class="section-label">😫 こんな経験ありませんか？</span>
@@ -658,7 +191,27 @@
         </div>
     </section>
 
-    <!-- How It Works -->
+    <style>
+        .how-it-works { padding: 120px 20px; background: linear-gradient(180deg, #f8fafc 0%, white 100%); }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 60px; }
+        @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+        .step { text-align: center; position: relative; }
+        .step-number {
+            width: 80px; height: 80px; background: var(--gradient); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px; font-weight: 900; color: white; margin: 0 auto 24px; position: relative;
+        }
+        .step-number::after {
+            content: ''; position: absolute; inset: -8px;
+            border: 2px dashed rgba(102, 126, 234, 0.3); border-radius: 50%;
+        }
+        .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .step p { color: #64748b; font-size: 14px; line-height: 1.7; }
+        .step-arrow { position: absolute; top: 40px; right: -15px; font-size: 24px; color: #cbd5e1; }
+        @media (max-width: 900px) { .step-arrow { display: none; } }
+    </style>
+
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <span class="section-label">✨ 使い方</span>
@@ -690,10 +243,21 @@
             </div>
         </div>
     </section>
-</body>
-</html>
 
-    <!-- Comparison Section -->
+    <style>
+        .comparison { padding: 120px 20px; background: white; }
+        .comparison-table { margin-top: 60px; background: #f8fafc; border-radius: 24px; overflow: hidden; }
+        .comparison-header, .comparison-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 20px 30px; }
+        .comparison-header { background: var(--gradient); color: white; font-weight: 700; }
+        .comparison-row { border-bottom: 1px solid #e2e8f0; }
+        .comparison-row:last-child { border-bottom: none; }
+        .comparison-feature { font-weight: 500; }
+        .comparison-us, .comparison-others { text-align: center; }
+        .check { color: #10b981; font-weight: 700; font-size: 20px; }
+        .cross { color: #ef4444; font-weight: 700; font-size: 20px; }
+        .partial { color: #f59e0b; font-weight: 700; font-size: 20px; }
+    </style>
+
     <section class="comparison" id="comparison">
         <div class="container">
             <span class="section-label">🆚 他サービスとの違い</span>
@@ -729,70 +293,29 @@
                     <div class="comparison-others"><span class="partial">△</span></div>
                 </div>
                 <div class="comparison-row">
-                    <div class="comparison-feature">プライバシー配慮（スキップ可）</div>
+                    <div class="comparison-feature">プライバシー配慮</div>
                     <div class="comparison-us"><span class="check">✓</span></div>
                     <div class="comparison-others"><span class="cross">✗</span></div>
                 </div>
-                <div class="comparison-row">
-                    <div class="comparison-feature">周辺のお店提案</div>
-                    <div class="comparison-us"><span class="check">✓</span></div>
-                    <div class="comparison-others"><span class="partial">△</span></div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <span class="section-label">💎 特徴</span>
-            <h2 class="section-title">シンプルだけど、<br>ちゃんと使える</h2>
-            <div class="features-grid">
-                <div class="feature-card feature-card-large">
-                    <div class="feature-visual">
-                        <div class="feature-demo">
-                            <div class="demo-url">
-                                <span class="demo-url-icon">🔗</span>
-                                <span class="demo-url-text">meetupspot.app/g/abc123</span>
-                                <span class="demo-url-copy">コピー</span>
-                            </div>
-                            <div class="demo-share">
-                                <div class="demo-share-icon line">LINE</div>
-                                <div class="demo-share-icon slack">Slack</div>
-                                <div class="demo-share-icon other">...</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature-content">
-                        <h3>登録不要、URL共有だけ</h3>
-                        <p>アカウント作成は不要。URLを共有するだけで、誰でもすぐに参加できます。Walicaの思想を参考に、使うこと自体が友達への共有になるバイラル設計。</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-small">🗳️</div>
-                    <h3>投票で民主的に決定</h3>
-                    <p>複数の候補から投票で決定。声の大きい人に流されない、フェアな意思決定。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-small">🤫</div>
-                    <h3>プライバシー配慮</h3>
-                    <p>最寄り駅を言いたくない人はスキップ可能。住んでる場所を知られたくない人も安心。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-small">🍽️</div>
-                    <h3>お店も一緒に提案</h3>
-                    <p>中間地点が決まったら、周辺のお店も提案。場所決めからお店探しまでワンストップ。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-small">⚡</div>
-                    <h3>AIが最適化</h3>
-                    <p>単純な中間地点ではなく、駅の利便性や乗り換えを考慮した最適な場所を提案。</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <style>
+        .use-cases { padding: 120px 20px; background: linear-gradient(180deg, #f8fafc 0%, white 100%); }
+        .use-cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+        @media (max-width: 900px) { .use-cases-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .use-cases-grid { grid-template-columns: 1fr; } }
+        .use-case-card {
+            background: white; border-radius: 20px; padding: 32px; text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .use-case-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); }
+        .use-case-emoji { font-size: 48px; margin-bottom: 16px; }
+        .use-case-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .use-case-card p { color: #64748b; font-size: 14px; line-height: 1.6; }
+    </style>
 
-    <!-- Use Cases -->
     <section class="use-cases">
         <div class="container">
             <span class="section-label">🎯 こんな時に使える</span>
@@ -832,7 +355,26 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
+    <style>
+        .final-cta { padding: 120px 20px; background: white; }
+        .cta-card {
+            background: var(--dark); border-radius: 32px; padding: 80px 40px;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .cta-bg { position: absolute; inset: 0; overflow: hidden; }
+        .cta-blob { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.3; }
+        .cta-blob-1 { width: 400px; height: 400px; background: var(--primary); top: -100px; right: -100px; }
+        .cta-blob-2 { width: 300px; height: 300px; background: var(--accent); bottom: -100px; left: -50px; }
+        .cta-content { position: relative; z-index: 10; }
+        .cta-content h2 { font-size: clamp(28px, 5vw, 42px); color: white; margin-bottom: 16px; }
+        .cta-content p { color: rgba(255, 255, 255, 0.7); font-size: 18px; margin-bottom: 40px; }
+        .btn-large { padding: 22px 50px; font-size: 18px; }
+        .cta-stats { display: flex; justify-content: center; gap: 60px; margin-top: 60px; }
+        @media (max-width: 600px) { .cta-stats { flex-direction: column; gap: 30px; } }
+        .cta-stat-number { font-size: 36px; font-weight: 900; color: white; }
+        .cta-stat-label { font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+    </style>
+
     <section class="final-cta">
         <div class="container">
             <div class="cta-card">
@@ -843,10 +385,7 @@
                 <div class="cta-content">
                     <h2>今すぐ、中間地点を見つけよう</h2>
                     <p>登録不要・完全無料。30秒で始められます。</p>
-                    <a href="/app" class="btn-primary btn-large">
-                        <span>🚀</span>
-                        MeetupSpotを使ってみる
-                    </a>
+                    <a href="#" class="btn-primary btn-large"><span>🚀</span>MeetupSpotを使ってみる</a>
                     <div class="cta-stats">
                         <div class="cta-stat">
                             <div class="cta-stat-number">10,000+</div>
@@ -866,7 +405,22 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <style>
+        .footer { background: var(--dark); padding: 80px 20px 40px; color: white; }
+        .footer-content { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; margin-bottom: 60px; }
+        @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; gap: 40px; } }
+        .footer-logo { font-size: 24px; font-weight: 900; margin-bottom: 12px; }
+        .footer-brand p { color: rgba(255, 255, 255, 0.6); font-size: 14px; }
+        .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        @media (max-width: 600px) { .footer-links { grid-template-columns: 1fr; gap: 30px; } }
+        .footer-column h4 { font-size: 14px; font-weight: 700; margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); }
+        .footer-column a { display: block; color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px; margin-bottom: 12px; transition: color 0.3s; }
+        .footer-column a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; text-align: center; }
+        .footer-bottom p { color: rgba(255, 255, 255, 0.4); font-size: 13px; }
+        @media (max-width: 768px) { .nav-links { display: none; } .nav { padding: 15px 20px; } }
+    </style>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -877,7 +431,7 @@
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>サービス</h4>
-                        <a href="/app">アプリを使う</a>
+                        <a href="#">アプリを使う</a>
                         <a href="#how-it-works">使い方</a>
                         <a href="#features">機能</a>
                     </div>
@@ -885,13 +439,11 @@
                         <h4>サポート</h4>
                         <a href="#">よくある質問</a>
                         <a href="#">お問い合わせ</a>
-                        <a href="#">フィードバック</a>
                     </div>
                     <div class="footer-column">
                         <h4>法的情報</h4>
                         <a href="#">利用規約</a>
                         <a href="#">プライバシーポリシー</a>
-                        <a href="#">特定商取引法</a>
                     </div>
                 </div>
             </div>
@@ -902,515 +454,10 @@
     </footer>
 
     <script>
-        // Navigation scroll effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.problem-card, .step, .feature-card, .use-case-card, .comparison-row').forEach(el => {
-            el.classList.add('animate-target');
-            observer.observe(el);
+            nav.classList.toggle('scrolled', window.scrollY > 50);
         });
     </script>
-
-    <style>
-        /* ========== Comparison Section ========== */
-        .comparison {
-            padding: 120px 20px;
-            background: white;
-        }
-
-        .comparison-table {
-            margin-top: 60px;
-            background: #f8fafc;
-            border-radius: 24px;
-            overflow: hidden;
-        }
-
-        .comparison-header,
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            padding: 20px 30px;
-        }
-
-        .comparison-header {
-            background: var(--gradient);
-            color: white;
-            font-weight: 700;
-        }
-
-        .comparison-row {
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-feature {
-            font-weight: 500;
-        }
-
-        .comparison-us,
-        .comparison-others {
-            text-align: center;
-        }
-
-        .check {
-            color: #10b981;
-            font-weight: 700;
-            font-size: 20px;
-        }
-
-        .cross {
-            color: #ef4444;
-            font-weight: 700;
-            font-size: 20px;
-        }
-
-        .partial {
-            color: #f59e0b;
-            font-weight: 700;
-            font-size: 20px;
-        }
-
-        /* ========== Features Section ========== */
-        .features {
-            padding: 120px 20px;
-            background: linear-gradient(180deg, #f8fafc 0%, white 100%);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 900px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-card-large {
-            grid-column: span 3;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            background: var(--gradient);
-            color: white;
-        }
-
-        @media (max-width: 900px) {
-            .feature-card-large {
-                grid-column: span 1;
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .feature-visual {
-            padding: 20px;
-        }
-
-        .feature-demo {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 24px;
-        }
-
-        .demo-url {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: white;
-            padding: 12px 16px;
-            border-radius: 10px;
-            margin-bottom: 16px;
-        }
-
-        .demo-url-icon {
-            font-size: 18px;
-        }
-
-        .demo-url-text {
-            flex: 1;
-            color: var(--dark);
-            font-size: 14px;
-            font-family: monospace;
-        }
-
-        .demo-url-copy {
-            background: var(--gradient);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .demo-share {
-            display: flex;
-            gap: 12px;
-        }
-
-        .demo-share-icon {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 12px;
-            font-weight: 700;
-            color: white;
-        }
-
-        .demo-share-icon.line {
-            background: #06c755;
-        }
-
-        .demo-share-icon.slack {
-            background: #4a154b;
-        }
-
-        .demo-share-icon.other {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .feature-content h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .feature-content p {
-            opacity: 0.9;
-            line-height: 1.8;
-        }
-
-        .feature-icon-small {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: #64748b;
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        /* ========== Use Cases ========== */
-        .use-cases {
-            padding: 120px 20px;
-            background: white;
-        }
-
-        .use-cases-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 900px) {
-            .use-cases-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .use-cases-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .use-case-card {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 32px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .use-case-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        }
-
-        .use-case-emoji {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .use-case-card h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .use-case-card p {
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* ========== Final CTA ========== */
-        .final-cta {
-            padding: 120px 20px;
-            background: linear-gradient(180deg, white 0%, #f8fafc 100%);
-        }
-
-        .cta-card {
-            background: var(--dark);
-            border-radius: 32px;
-            padding: 80px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-bg {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .cta-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-        }
-
-        .cta-blob-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            top: -100px;
-            right: -100px;
-        }
-
-        .cta-blob-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent);
-            bottom: -100px;
-            left: -50px;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .cta-content h2 {
-            font-size: clamp(28px, 5vw, 42px);
-            color: white;
-            margin-bottom: 16px;
-        }
-
-        .cta-content p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-        .btn-large {
-            padding: 22px 50px;
-            font-size: 18px;
-        }
-
-        .cta-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 60px;
-        }
-
-        @media (max-width: 600px) {
-            .cta-stats {
-                flex-direction: column;
-                gap: 30px;
-            }
-        }
-
-        .cta-stat-number {
-            font-size: 36px;
-            font-weight: 900;
-            color: white;
-        }
-
-        .cta-stat-label {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* ========== Footer ========== */
-        .footer {
-            background: var(--dark);
-            padding: 80px 20px 40px;
-            color: white;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 900;
-            margin-bottom: 12px;
-        }
-
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        @media (max-width: 600px) {
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        .footer-column h4 {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .footer-column a {
-            display: block;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 12px;
-            transition: color 0.3s;
-        }
-
-        .footer-column a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 13px;
-        }
-
-        /* ========== Animations ========== */
-        .animate-target {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate-target.animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .problem-card:nth-child(2) { transition-delay: 0.1s; }
-        .problem-card:nth-child(3) { transition-delay: 0.2s; }
-
-        .step:nth-child(2) { transition-delay: 0.1s; }
-        .step:nth-child(3) { transition-delay: 0.2s; }
-        .step:nth-child(4) { transition-delay: 0.3s; }
-
-        .feature-card:nth-child(2) { transition-delay: 0.1s; }
-        .feature-card:nth-child(3) { transition-delay: 0.2s; }
-        .feature-card:nth-child(4) { transition-delay: 0.3s; }
-        .feature-card:nth-child(5) { transition-delay: 0.4s; }
-
-        .use-case-card:nth-child(2) { transition-delay: 0.1s; }
-        .use-case-card:nth-child(3) { transition-delay: 0.2s; }
-        .use-case-card:nth-child(4) { transition-delay: 0.3s; }
-        .use-case-card:nth-child(5) { transition-delay: 0.4s; }
-        .use-case-card:nth-child(6) { transition-delay: 0.5s; }
-
-        .comparison-row:nth-child(2) { transition-delay: 0.05s; }
-        .comparison-row:nth-child(3) { transition-delay: 0.1s; }
-        .comparison-row:nth-child(4) { transition-delay: 0.15s; }
-        .comparison-row:nth-child(5) { transition-delay: 0.2s; }
-        .comparison-row:nth-child(6) { transition-delay: 0.25s; }
-        .comparison-row:nth-child(7) { transition-delay: 0.3s; }
-
-        /* ========== Mobile Menu ========== */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .nav {
-                padding: 15px 20px;
-            }
-        }
-    </style>
 </body>
 </html>
